@@ -88,7 +88,7 @@ public class EmployeeController {
     //TODO 修改前端的mapping映射，这里为了让代码跑将 PostMapping 为空，前端请求为 /admin/employee，应该为 /admin/employee/save
     @PostMapping()
     @ApiOperation("新增员工")
-    public Result save(@RequestBody EmployeeDTO employeeDTO) {
+    public Result<T> save(@RequestBody EmployeeDTO employeeDTO) {
         log.info("新增员工：{}", employeeDTO);
         employeeService.save(employeeDTO);
         return Result.success();
@@ -131,7 +131,7 @@ public class EmployeeController {
 
     @PutMapping
     @ApiOperation("编辑员工信息")
-    public Result update(@RequestBody EmployeeDTO employeeDTO){
+    public Result<T> update(@RequestBody EmployeeDTO employeeDTO){
         log.info("修改员工信息：{}", employeeDTO);
         employeeService.update(employeeDTO);
         return Result.success();
